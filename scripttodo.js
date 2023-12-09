@@ -1,7 +1,9 @@
 let addBtn = document.getElementById("todo-btn");
 addBtn.addEventListener("click", addButton);
 function addButton() {
-    newTodo()
+    // Function yang di panggil harusnya addtoDo
+    // newToDo() ini yang sebelumnya
+    addtoDo()
     clearText();
 }
 
@@ -11,9 +13,10 @@ let todolist = document.getElementById("todoList");
 function clearText(){
     todoIsi.value = "";
 }
-function newTodo (itemText, completed){
+function newToDo (itemText, completed){
     let todoItem = document.createElement("li");
-    let todoText = document.createTextNode(todoIsi.value);
+    // let todoText = document.createTextNode(todoIsi.value); yang ini harusnya diisi parameter pertama yaitu itemText
+    let todoText = document.createTextNode(itemText); // seperti ini
 
     todoItem.appendChild(todoText);
 
@@ -26,7 +29,7 @@ function newTodo (itemText, completed){
 
 function addtoDo(){
     let itemText = todoIsi.value;
-    newTodo(itemText, false);
+    newToDo(itemText, false);
 }
 
 function toggleTodo(){
@@ -40,6 +43,7 @@ function toggleTodo(){
 function clearBtn(){
     let completedItems = todolist.getElementsByClassName("completed");
     while(completedItems.length > 0){
+        // masih ada bug bagian ini, bisa di cek ulang
         completedItems.item(0).remove();
     }
 }
@@ -84,7 +88,7 @@ function loadList() {
 
         for (var i = 0; i < toDos.length; i++) {
             var toDo = toDos[i];
-            newToDoItem(toDo.task, toDo.completed);
+            newToDo(toDo.task, toDo.completed);
         }
     }
 }
